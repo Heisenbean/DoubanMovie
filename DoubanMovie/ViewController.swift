@@ -8,18 +8,30 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        self .addChildsViewController()
+    }
+    
+    
+    
+    /// 添加子视图控制器
+    private func addChildsViewController() {
+        addChildViewController("Showing","上映","")
+        addChildViewController("Cinema","影院","")
+        addChildViewController("MyMovies","我的电影","")
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func addChildViewController(sbName:String,_ title:String,_ imageName:String) {
+        let nav = UIStoryboard.initialWithStoryboradName(Sbname: sbName) as! UINavigationController // 添加导航控制器
+        nav.topViewController.title = title  // nav的title
+        nav.tabBarItem.image = UIImage(named: imageName)
+        nav.tabBarItem.selectedImage = UIImage(named: imageName + "_highlighted")
+        addChildViewController(nav)
     }
-
 
 }
 
