@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KHT-w7-TTW">
-                            <size key="itemSize" width="177" height="214"/>
+                            <size key="itemSize" width="177" height="213"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -23,26 +23,42 @@
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="177" height="214"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="177" height="213"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hwc-tE-d1F">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hwc-tE-d1F">
                                             <rect key="frame" x="30" y="0.0" width="117" height="143"/>
                                             <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="117" id="rrC-gs-CW2"/>
+                                                <constraint firstAttribute="height" constant="143" id="xdN-vr-EtQ"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="你好" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="117" translatesAutoresizingMaskIntoConstraints="NO" id="GjY-TE-hsz">
-                                            <rect key="frame" x="73" y="149" width="30" height="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你好" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="117" translatesAutoresizingMaskIntoConstraints="NO" id="GjY-TE-hsz">
+                                            <rect key="frame" x="73" y="147" width="30" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tYG-GM-u3p">
-                                            <rect key="frame" x="26" y="182" width="125" height="24"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tYG-GM-u3p">
+                                            <rect key="frame" x="26" y="189" width="125" height="23"/>
                                             <color key="backgroundColor" red="0.49019607840000001" green="0.72941176470000002" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="23" id="6l6-ej-ycF"/>
+                                                <constraint firstAttribute="width" constant="125" id="nTQ-R4-6tc"/>
+                                            </constraints>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="tYG-GM-u3p" secondAttribute="bottom" constant="1" id="9H0-3F-Ehj"/>
+                                    <constraint firstAttribute="centerX" secondItem="tYG-GM-u3p" secondAttribute="centerX" id="IFY-b0-9vA"/>
+                                    <constraint firstItem="hwc-tE-d1F" firstAttribute="top" secondItem="lBO-tP-RhS" secondAttribute="top" id="YDL-pn-BSX"/>
+                                    <constraint firstAttribute="centerX" secondItem="GjY-TE-hsz" secondAttribute="centerX" constant="0.5" id="hIh-TE-Jva"/>
+                                    <constraint firstItem="GjY-TE-hsz" firstAttribute="top" secondItem="hwc-tE-d1F" secondAttribute="bottom" constant="4" id="meQ-9E-8Yc"/>
+                                    <constraint firstAttribute="centerX" secondItem="hwc-tE-d1F" secondAttribute="centerX" id="nC4-To-gzX"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="movieImage" destination="hwc-tE-d1F" id="uZ7-f1-DQj"/>
                                     <outlet property="movieName" destination="GjY-TE-hsz" id="xYt-5q-hJ9"/>

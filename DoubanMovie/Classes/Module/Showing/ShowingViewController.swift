@@ -20,16 +20,21 @@ class ShowingViewController: UICollectionViewController {
 //        self.collectionView!.registerClass(MovieCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         
-        loadData()
       
     }
     
+    override func viewWillAppear(animated: Bool) {
+        loadData()
+
+    }
+    
     var jsonArray:[JSON]?
+    
     func loadData(){
 
         let url = "https://api.douban.com/v2/movie/in_theaters"
         Alamofire.request(.GET,url, parameters: nil)
-            .responseJSON { (req, res, json, error) in
+            .responseJSON { (req, res, JsonObj, error) in
                 if(error != nil) {
                     NSLog("Error: \(error)")
                     println(req)
@@ -37,11 +42,13 @@ class ShowingViewController: UICollectionViewController {
                 }
                 else {
 //                    NSLog("Success: \(url)")
-                    var json = JSON(json!)
-                    for (index: String, subJson: JSON) in json {
-                        self.jsonArray?.append(subJson)
-                    }
+                    var json = JSON(JsonObj!)
+                    
+                    let movies = json["subjects"].arrayValue
+                    self.jsonArray = movies
+//                    println(movies[0]["title"])
                     self.collectionView?.reloadData()
+
                 }
         }
     }
@@ -49,19 +56,23 @@ class ShowingViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //#warning Incomplete method implementation -- Return the number of items in the section
-        return jsonArray!.count ?? 0
+        return 10
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! MovieCell
         if (jsonArray != nil){
-        for j in jsonArray!{
-            println(j)
-        }
-        }
+            let s = jsonArray![indexPath.row]["title"].string!
+            cell.movieName.text = s
+            cell.movieName.sizeToFit()
+//            cell.movieName.textAlignment = .Center
+            println(s)
+    }
+        
         return cell
     }
 }
+
 
 
 class MovieCell:UICollectionViewCell{
