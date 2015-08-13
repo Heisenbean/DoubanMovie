@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Kingfisher
+
 let reuseIdentifier = "cell"
 
 class ShowingViewController: UICollectionViewController {
@@ -20,14 +22,13 @@ class ShowingViewController: UICollectionViewController {
 //        self.collectionView!.registerClass(MovieCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         
-      
+      loadData()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        loadData()
-
-    }
+    func setupUI(){
     
+        layout.itemSize = CGSizeMake(100, 100)
+    }
     var jsonArray:[JSON]?
     
     func loadData(){
@@ -63,10 +64,10 @@ class ShowingViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! MovieCell
         if (jsonArray != nil){
             let s = jsonArray![indexPath.row]["title"].string!
+            let imageStr = jsonArray![indexPath.row]["images"]["large"].string!
+            let imageUrl = NSURL(string: imageStr)
             cell.movieName.text = s
-            cell.movieName.sizeToFit()
-//            cell.movieName.textAlignment = .Center
-            println(s)
+            cell.movieImage.kf_setImageWithURL(imageUrl!)
     }
         
         return cell
