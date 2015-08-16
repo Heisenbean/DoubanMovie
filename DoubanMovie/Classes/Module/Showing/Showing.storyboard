@@ -12,7 +12,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KHT-w7-TTW">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="KHT-w7-TTW">
                             <size key="itemSize" width="177" height="225"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -50,15 +50,14 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="hwc-tE-d1F" firstAttribute="leading" secondItem="GjY-TE-hsz" secondAttribute="leading" id="3Ff-l2-5U8"/>
                                     <constraint firstItem="GjY-TE-hsz" firstAttribute="top" secondItem="hwc-tE-d1F" secondAttribute="bottom" constant="6" id="DQu-3t-PhT"/>
                                     <constraint firstItem="hwc-tE-d1F" firstAttribute="width" secondItem="GjY-TE-hsz" secondAttribute="width" id="IAS-nI-D2M"/>
                                     <constraint firstAttribute="centerX" secondItem="tYG-GM-u3p" secondAttribute="centerX" id="IFY-b0-9vA"/>
                                     <constraint firstItem="hwc-tE-d1F" firstAttribute="top" secondItem="lBO-tP-RhS" secondAttribute="top" id="YDL-pn-BSX"/>
                                     <constraint firstAttribute="centerX" secondItem="hwc-tE-d1F" secondAttribute="centerX" id="nC4-To-gzX"/>
                                     <constraint firstItem="tYG-GM-u3p" firstAttribute="top" secondItem="GjY-TE-hsz" secondAttribute="bottom" constant="8" symbolic="YES" id="oGa-gd-QcG"/>
+                                    <constraint firstItem="GjY-TE-hsz" firstAttribute="leading" secondItem="hwc-tE-d1F" secondAttribute="leading" id="ytu-45-cYv"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="movieImage" destination="hwc-tE-d1F" id="uZ7-f1-DQj"/>
@@ -74,6 +73,7 @@
                     <navigationItem key="navigationItem" id="noh-u5-8mR"/>
                     <connections>
                         <outlet property="layout" destination="KHT-w7-TTW" id="HbB-sx-0VV"/>
+                        <outlet property="myCollectionView" destination="0f1-SR-PaL" id="AQc-Ke-Qeh"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dn0-Wv-VQC" userLabel="First Responder" sceneMemberID="firstResponder"/>

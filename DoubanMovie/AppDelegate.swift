@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+let kScreenSize = UIScreen.mainScreen().bounds.size
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

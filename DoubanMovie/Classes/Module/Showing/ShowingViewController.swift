@@ -12,22 +12,31 @@ import SwiftyJSON
 import Kingfisher
 
 let reuseIdentifier = "cell"
-
+let itemHeight: CGFloat = 200
+let itemLeftMargin: CGFloat = 15
+let itemMargin: CGFloat = 20
 class ShowingViewController: UICollectionViewController {
 
+    @IBOutlet var myCollectionView: UICollectionView!
 
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.collectionView!.registerClass(MovieCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
-        
+        setupUI()
       loadData()
     }
     
     func setupUI(){
     
-        layout.itemSize = CGSizeMake(100, 100)
+        
+        let itemWidth = (kScreenSize.width - 2 * (itemMargin + itemLeftMargin)) / 3
+        layout.itemSize = CGSizeMake(itemWidth,itemHeight)
+        myCollectionView.frame.origin = CGPointMake(itemLeftMargin, itemMargin)
+        myCollectionView.frame.size.width = kScreenSize.width - 2 * itemLeftMargin
+        
+        layout.minimumLineSpacing = 25
+//        layout.minimumInteritemSpacing = 20
     }
     var jsonArray:[JSON]?
     
