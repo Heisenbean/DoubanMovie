@@ -12,7 +12,7 @@ import SwiftyJSON
 import Kingfisher
 
 let reuseIdentifier = "cell"
-let itemHeight: CGFloat = 200
+let itemHeight: CGFloat = 187
 let itemLeftMargin: CGFloat = 15
 let itemMargin: CGFloat = 20
 class ShowingViewController: UICollectionViewController {
@@ -34,9 +34,8 @@ class ShowingViewController: UICollectionViewController {
         layout.itemSize = CGSizeMake(itemWidth,itemHeight)
         myCollectionView.frame.origin = CGPointMake(itemLeftMargin, itemMargin)
         myCollectionView.frame.size.width = kScreenSize.width - 2 * itemLeftMargin
-        
-        layout.minimumLineSpacing = 25
-//        layout.minimumInteritemSpacing = 20
+        layout.minimumLineSpacing = 20
+        self.myCollectionView.contentInset = UIEdgeInsetsMake(0, 0, 24, 0)
     }
     var jsonArray:[JSON]?
     
@@ -53,10 +52,8 @@ class ShowingViewController: UICollectionViewController {
                 else {
 //                    NSLog("Success: \(url)")
                     var json = JSON(JsonObj!)
-                    
                     let movies = json["subjects"].arrayValue
                     self.jsonArray = movies
-//                    println(movies[0]["title"])
                     self.collectionView?.reloadData()
 
                 }
@@ -66,19 +63,12 @@ class ShowingViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //#warning Incomplete method implementation -- Return the number of items in the section
-        return 10
+        return jsonArray?.count ?? 0
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! MovieCell
-        if (jsonArray != nil){
-            let s = jsonArray![indexPath.row]["title"].string!
-            let imageStr = jsonArray![indexPath.row]["images"]["large"].string!
-            let imageUrl = NSURL(string: imageStr)
-            cell.movieName.text = s
-            cell.movieImage.kf_setImageWithURL(imageUrl!)
-    }
-        
+            cell.hotMovies = jsonArray![indexPath.row]
         return cell
     }
 }
@@ -86,8 +76,32 @@ class ShowingViewController: UICollectionViewController {
 
 
 class MovieCell:UICollectionViewCell{
-
+    
     @IBOutlet weak var movieImage: UIImageView!
 
     @IBOutlet weak var movieName: UILabel!
+    
+    @IBOutlet weak var starImageView: UIImageView!
+    
+    @IBOutlet weak var averageLabel: UILabel!
+    
+    var hotMovies:JSON?{
+        didSet{
+            movieName.text = hotMovies!["title"].string
+            movieImage.kf_setImageWithURL(NSURL(string: hotMovies!["images"]["large"].string!)!)
+            
+            let average:Float = hotMovies!["rating"]["average"].floatValue
+            if average <= 3.1{
+                starImageView.image = UIImage(named: "icon_star_1")
+            }else if average > 3.1 && average <= 5.1{
+                starImageView.image = UIImage(named: "icon_star_2")
+            }else if average > 5.1 && average <= 7.1{
+                starImageView.image = UIImage(named: "icon_star_3")
+            }else{
+                starImageView.image = UIImage(named: "icon_star_4")
+            }
+            averageLabel.text = hotMovies!["rating"]["average"].stringValue
+        }
+    }
+
 }
