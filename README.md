@@ -1,2 +1,2 @@
 # DoubanMovie
-就是一个豆瓣电影swift写的的练手demo啊...
+就是一个用豆瓣电影提供的接口,然后用Swift写的一个和电影相关的app.
