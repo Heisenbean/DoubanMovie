@@ -24,13 +24,12 @@ class ShowingViewController: UICollectionViewController {
         super.viewDidLoad()
 
         setupUI()
-      loadData()
+        loadData()
     }
     
-    func setupUI(){
+    var itemWidth = (kScreenSize.width - 2 * (itemMargin + itemLeftMargin)) / 3
     
-        
-        let itemWidth = (kScreenSize.width - 2 * (itemMargin + itemLeftMargin)) / 3
+    func setupUI(){
         layout.itemSize = CGSizeMake(itemWidth,itemHeight)
         myCollectionView.frame.origin = CGPointMake(itemLeftMargin, itemMargin)
         myCollectionView.frame.size.width = kScreenSize.width - 2 * itemLeftMargin
@@ -50,7 +49,6 @@ class ShowingViewController: UICollectionViewController {
                     println(res)
                 }
                 else {
-//                    NSLog("Success: \(url)")
                     var json = JSON(JsonObj!)
                     let movies = json["subjects"].arrayValue
                     self.jsonArray = movies
@@ -75,22 +73,30 @@ class ShowingViewController: UICollectionViewController {
 
 
 
+
 class MovieCell:UICollectionViewCell{
     
     @IBOutlet weak var movieImage: UIImageView!
 
-    @IBOutlet weak var movieName: UILabel!
+    @IBOutlet weak var movieName: UILabel!{
+        didSet{
+        }
+    }
     
     @IBOutlet weak var starImageView: UIImageView!
     
     @IBOutlet weak var averageLabel: UILabel!
-    
+    @IBOutlet weak var tipsLabel: UILabel!
     var hotMovies:JSON?{
         didSet{
+
             movieName.text = hotMovies!["title"].string
+            movieName.preferredMaxLayoutWidth = 20
+
             movieImage.kf_setImageWithURL(NSURL(string: hotMovies!["images"]["large"].string!)!)
             
-            let average:Float = hotMovies!["rating"]["average"].floatValue
+            let average = hotMovies!["rating"]["average"]
+            let floatAverage = average.floatValue
             if average <= 3.1{
                 starImageView.image = UIImage(named: "icon_star_1")
             }else if average > 3.1 && average <= 5.1{
@@ -100,8 +106,23 @@ class MovieCell:UICollectionViewCell{
             }else{
                 starImageView.image = UIImage(named: "icon_star_4")
             }
-            averageLabel.text = hotMovies!["rating"]["average"].stringValue
+            averageLabel.text = average.stringValue
+            if average.floatValue == 0{
+                starImageView.hidden = true
+                averageLabel.hidden = true
+                tipsLabel.hidden = false
+            }
+
         }
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let itemWidth = (kScreenSize.width - 2 * (itemMargin + itemLeftMargin)) / 3
+        if movieName.width >= itemWidth {
+            movieName.width = itemWidth
+        }
 
+    }
+    
 }

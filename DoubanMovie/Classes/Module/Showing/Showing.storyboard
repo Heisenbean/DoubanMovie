@@ -51,6 +51,12 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无评分" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mud-22-jtz">
+                                            <rect key="frame" x="0.0" y="166" width="48" height="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -61,6 +67,8 @@
                                     <constraint firstItem="GjY-TE-hsz" firstAttribute="top" secondItem="hwc-tE-d1F" secondAttribute="bottom" constant="5" id="UOH-3J-IAe"/>
                                     <constraint firstItem="hwc-tE-d1F" firstAttribute="top" secondItem="lBO-tP-RhS" secondAttribute="top" id="UtR-Aa-anN"/>
                                     <constraint firstAttribute="trailing" secondItem="hwc-tE-d1F" secondAttribute="trailing" id="ZgT-dj-NVM"/>
+                                    <constraint firstItem="mud-22-jtz" firstAttribute="leading" secondItem="lBO-tP-RhS" secondAttribute="leading" id="d2I-nY-E9p"/>
+                                    <constraint firstItem="mud-22-jtz" firstAttribute="top" secondItem="GjY-TE-hsz" secondAttribute="bottom" constant="6.5" id="ekj-DI-QAn"/>
                                     <constraint firstItem="hwc-tE-d1F" firstAttribute="leading" secondItem="lBO-tP-RhS" secondAttribute="leading" id="huF-z4-Gcw"/>
                                     <constraint firstItem="xxi-Dd-xkb" firstAttribute="top" secondItem="GjY-TE-hsz" secondAttribute="bottom" constant="5" id="xe6-mn-e9p"/>
                                     <constraint firstItem="GjY-TE-hsz" firstAttribute="leading" secondItem="lBO-tP-RhS" secondAttribute="leading" id="xlw-Jn-uy4"/>
@@ -70,6 +78,7 @@
                                     <outlet property="movieImage" destination="hwc-tE-d1F" id="uZ7-f1-DQj"/>
                                     <outlet property="movieName" destination="GjY-TE-hsz" id="xYt-5q-hJ9"/>
                                     <outlet property="starImageView" destination="xxi-Dd-xkb" id="gih-vP-Opg"/>
+                                    <outlet property="tipsLabel" destination="mud-22-jtz" id="0nU-b2-iGD"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		350E90DC1B9366FC00BEAEF1 /* UIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350E90DB1B9366FC00BEAEF1 /* UIExtension.swift */; };
 		35163CEC1B79DA96008CA295 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35163CEB1B79DA96008CA295 /* AppDelegate.swift */; };
 		35163CEE1B79DA96008CA295 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35163CED1B79DA96008CA295 /* ViewController.swift */; };
 		35163CF31B79DA96008CA295 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35163CF21B79DA96008CA295 /* Images.xcassets */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		065B23714AD98389CBA1E824 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		350E90DB1B9366FC00BEAEF1 /* UIExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtension.swift; sourceTree = "<group>"; };
 		35163CE61B79DA96008CA295 /* DoubanMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoubanMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35163CEA1B79DA96008CA295 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35163CEB1B79DA96008CA295 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -219,17 +221,19 @@
 		35163D291B79EC4A008CA295 /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				35163D2A1B79EC4A008CA295 /* Category */,
+				35163D2A1B79EC4A008CA295 /* Category&Extension */,
 				35163D2B1B79EC4A008CA295 /* Libs */,
 				35163D2C1B79EC4A008CA295 /* Tools */,
 			);
 			path = Others;
 			sourceTree = "<group>";
 		};
-		35163D2A1B79EC4A008CA295 /* Category */ = {
+		35163D2A1B79EC4A008CA295 /* Category&Extension */ = {
 			isa = PBXGroup;
 			children = (
+				350E90DB1B9366FC00BEAEF1 /* UIExtension.swift */,
 			);
+			name = "Category&Extension";
 			path = Category;
 			sourceTree = "<group>";
 		};
@@ -437,6 +441,7 @@
 				354D50461B7B8260000EEFE1 /* MovieImages.swift in Sources */,
 				35163D351B79EC4A008CA295 /* ShowingViewController.swift in Sources */,
 				35163CEC1B79DA96008CA295 /* AppDelegate.swift in Sources */,
+				350E90DC1B9366FC00BEAEF1 /* UIExtension.swift in Sources */,
 				35163D311B79EC4A008CA295 /* CinemaViewController.swift in Sources */,
 				35163D371B79ED0D008CA295 /* UIKit+Extension.swift in Sources */,
 				35163D331B79EC4A008CA295 /* MyMoviesViewController.swift in Sources */,
