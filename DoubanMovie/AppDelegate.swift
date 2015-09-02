@@ -8,6 +8,7 @@
 
 import UIKit
 let kScreenSize = UIScreen.mainScreen().bounds.size
+let baseUrl = "https://api.douban.com/v2/movie/"
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

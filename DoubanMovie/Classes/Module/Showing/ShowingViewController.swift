@@ -22,7 +22,6 @@ class ShowingViewController: UICollectionViewController {
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
         loadData()
     }
@@ -40,8 +39,7 @@ class ShowingViewController: UICollectionViewController {
     
     func loadData(){
 
-        let url = "https://api.douban.com/v2/movie/in_theaters"
-        Alamofire.request(.GET,url, parameters: nil)
+        Alamofire.request(.GET,baseUrl + "in_theaters", parameters: nil)
             .responseJSON { (req, res, JsonObj, error) in
                 if(error != nil) {
                     NSLog("Error: \(error)")
@@ -53,26 +51,34 @@ class ShowingViewController: UICollectionViewController {
                     let movies = json["subjects"].arrayValue
                     self.jsonArray = movies
                     self.collectionView?.reloadData()
-
+                    println(error,res,req)
                 }
         }
     }
-    
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //#warning Incomplete method implementation -- Return the number of items in the section
-        return jsonArray?.count ?? 0
-    }
-
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! MovieCell
-            cell.hotMovies = jsonArray![indexPath.row]
-        return cell
-    }
 }
 
 
-
+extension ShowingViewController:UICollectionViewDelegateFlowLayout,UICollectionViewDataSource{
+    
+    
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return jsonArray?.count ?? 0
+    }
+    
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! MovieCell
+        cell.hotMovies = jsonArray![indexPath.row]
+        return cell
+    }
+    
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let vc = UIStoryboard.initialViewController("DetailMovie") as! DetailMovieViewController
+        vc.subject_id = jsonArray![indexPath.row]["id"].string
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
 
 class MovieCell:UICollectionViewCell{
     
@@ -106,11 +112,16 @@ class MovieCell:UICollectionViewCell{
             }else{
                 starImageView.image = UIImage(named: "icon_star_4")
             }
-            averageLabel.text = average.stringValue
+            averageLabel.text = (String.localizedStringWithFormat("%.1f",average.floatValue))
+            println(average.floatValue)
             if average.floatValue == 0{
                 starImageView.hidden = true
                 averageLabel.hidden = true
                 tipsLabel.hidden = false
+            }else{
+                starImageView.hidden = false
+                averageLabel.hidden = false
+                tipsLabel.hidden = true
             }
 
         }
