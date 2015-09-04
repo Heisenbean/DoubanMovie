@@ -10,22 +10,39 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class DetailMovieViewController: UITableViewController {
+class DetailMovieViewController: UIViewController {
+    @IBOutlet weak var mainScrollView: UIScrollView!
+    
 
-    var subject_id:String?{
-        didSet{
-            tableView.reloadData()
-        }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        mainScrollView.contentSize = CGSizeMake(0, 800)
     }
+    
+    var subject_id:String?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = UIColor.redColor()
+    var movies:JSON?
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        println(__FUNCTION__)
         loadData()
     }
     
+    override func viewDidAppear(animated: Bool) {
+                println(__FUNCTION__)
+    }
+    
+
+    override func viewDidLoad() {
+        println(__FUNCTION__)
+        super.viewDidLoad()
+    }
+    
     func loadData(){
-        println(baseUrl + "subject/\(subject_id!)")
+//        println(baseUrl + "subject/\(subject_id!)")
+        
+        
         Alamofire.request(.GET,baseUrl + "subject/\(subject_id!)", parameters: nil)
             .responseJSON { (req, res, JsonObj, error) in
                 if(error != nil) {
@@ -34,31 +51,16 @@ class DetailMovieViewController: UITableViewController {
                     println(res)
                 }
                 else {
-                    var json = JSON(JsonObj!)
-                    let movies = json["summary"].string
-                    self.tableView?.reloadData()
-                    println("===\(movies)")
+                    (self.view as! DetailMovieView).movies = JSON(JsonObj!)
+//                    movieView.movies = JSON(JsonObj!)
+//                    self.movieName.text = self.movies!["title"].stringValue
+//                    let movies = json["summary"].string
+//                    println("===\(movies)")
+
                     
                 }
         }
 
     }
-    
-    // MARK: - Table view data source
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
-    }
-
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
-
-
-        return cell
-    }
-
-
-
 
 }

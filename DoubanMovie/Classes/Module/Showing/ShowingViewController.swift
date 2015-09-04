@@ -12,9 +12,8 @@ import SwiftyJSON
 import Kingfisher
 
 let reuseIdentifier = "cell"
-let itemHeight: CGFloat = 187
-let itemLeftMargin: CGFloat = 15
-let itemMargin: CGFloat = 20
+let itemLeftMargin: CGFloat = 14
+let itemMargin: CGFloat = 16
 class ShowingViewController: UICollectionViewController {
 
     @IBOutlet var myCollectionView: UICollectionView!
@@ -27,11 +26,12 @@ class ShowingViewController: UICollectionViewController {
     }
     
     var itemWidth = (kScreenSize.width - 2 * (itemMargin + itemLeftMargin)) / 3
-    
+
     func setupUI(){
+        let itemHeight:CGFloat = itemWidth * 1.7
         layout.itemSize = CGSizeMake(itemWidth,itemHeight)
         myCollectionView.frame.origin = CGPointMake(itemLeftMargin, itemMargin)
-        myCollectionView.frame.size.width = kScreenSize.width - 2 * itemLeftMargin
+        myCollectionView.width = kScreenSize.width - 2 * itemLeftMargin
         layout.minimumLineSpacing = 20
         self.myCollectionView.contentInset = UIEdgeInsetsMake(0, 0, 24, 0)
     }
