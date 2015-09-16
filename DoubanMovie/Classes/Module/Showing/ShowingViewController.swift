@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 import Alamofire
 import SwiftyJSON
 import Kingfisher
@@ -19,6 +20,9 @@ class ShowingViewController: UICollectionViewController {
     @IBOutlet var myCollectionView: UICollectionView!
 
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
+    
+    var canceld = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -34,28 +38,27 @@ class ShowingViewController: UICollectionViewController {
         myCollectionView.width = kScreenSize.width - 2 * itemLeftMargin
         layout.minimumLineSpacing = 20
         self.myCollectionView.contentInset = UIEdgeInsetsMake(0, 0, 24, 0)
+
     }
     var jsonArray:[JSON]?
     
     func loadData(){
-
-        Alamofire.request(.GET,baseUrl + "in_theaters", parameters: nil)
-            .responseJSON { (req, res, JsonObj, error) in
-                if(error != nil) {
-                    NSLog("Error: \(error)")
-                    println(req)
-                    println(res)
-                }
-                else {
-                    var json = JSON(JsonObj!)
-                    let movies = json["subjects"].arrayValue
-                    self.jsonArray = movies
-                    self.collectionView?.reloadData()
-                    println(error,res,req)
-                }
+        ProgressHUD.show("加载中,请稍后....")
+        Alamofire.request(.GET, baseUrl + "in_theaters", parameters: nil)
+        .responseJSON { (req, res, JsonObj, error) -> Void in
+            if(error != nil) {
+                ProgressHUD.showError("网络错误,请稍后再试")
+                println("Error: \(error)\(req)\(res)")
+            }
+            else {
+                ProgressHUD.dismiss()
+                var json = JSON(JsonObj!)
+                let movies = json["subjects"].arrayValue
+                self.jsonArray = movies
+                self.collectionView?.reloadData()
+            }
         }
     }
-
 }
 
 
@@ -84,14 +87,12 @@ class MovieCell:UICollectionViewCell{
     
     @IBOutlet weak var movieImage: UIImageView!
 
-    @IBOutlet weak var movieName: UILabel!{
-        didSet{
-        }
-    }
+    @IBOutlet weak var movieName: UILabel!
     
     @IBOutlet weak var starImageView: UIImageView!
     
     @IBOutlet weak var averageLabel: UILabel!
+    
     @IBOutlet weak var tipsLabel: UILabel!
     var hotMovies:JSON?{
         didSet{
@@ -113,7 +114,7 @@ class MovieCell:UICollectionViewCell{
                 starImageView.image = UIImage(named: "icon_star_4")
             }
             averageLabel.text = (String.localizedStringWithFormat("%.1f",average.floatValue))
-            println(average.floatValue)
+//            println(average.floatValue)
             if average.floatValue == 0{
                 starImageView.hidden = true
                 averageLabel.hidden = true
@@ -133,7 +134,5 @@ class MovieCell:UICollectionViewCell{
         if movieName.width >= itemWidth {
             movieName.width = itemWidth
         }
-
     }
-    
 }
