@@ -32,6 +32,7 @@ class ShowingViewController: UICollectionViewController {
     var itemWidth = (kScreenSize.width - 2 * (itemMargin + itemLeftMargin)) / 3
 
     func setupUI(){
+        view.backgroundColor = UIColor.colorFromRGB(0xf0f0f0, alpha: 1.0)
         let itemHeight:CGFloat = itemWidth * 1.7
         layout.itemSize = CGSizeMake(itemWidth,itemHeight)
         myCollectionView.frame.origin = CGPointMake(itemLeftMargin, itemMargin)
@@ -45,24 +46,24 @@ class ShowingViewController: UICollectionViewController {
     func loadData(){
         ProgressHUD.show("加载中,请稍后....")
         Alamofire.request(.GET, baseUrl + "in_theaters", parameters: nil)
-        .responseJSON { (req, res, JsonObj, error) -> Void in
-            if(error != nil) {
+        .responseJSON { (req, res, result) -> Void in
+            if(result.isFailure) {
                 ProgressHUD.showError("网络错误,请稍后再试")
-                println("Error: \(error)\(req)\(res)")
+                print("Error: \(result.error)\(req)\(res)")
             }
             else {
                 ProgressHUD.dismiss()
-                var json = JSON(JsonObj!)
+                var json = JSON(result.value!)
                 let movies = json["subjects"].arrayValue
                 self.jsonArray = movies
-                self.collectionView?.reloadData()
+                    self.collectionView?.reloadData()
             }
         }
     }
 }
 
 
-extension ShowingViewController:UICollectionViewDelegateFlowLayout,UICollectionViewDataSource{
+extension ShowingViewController{
     
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -103,7 +104,6 @@ class MovieCell:UICollectionViewCell{
             movieImage.kf_setImageWithURL(NSURL(string: hotMovies!["images"]["large"].string!)!)
             
             let average = hotMovies!["rating"]["average"]
-            let floatAverage = average.floatValue
             if average <= 3.1{
                 starImageView.image = UIImage(named: "icon_star_1")
             }else if average > 3.1 && average <= 5.1{

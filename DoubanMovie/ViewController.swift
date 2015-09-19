@@ -27,7 +27,7 @@ class ViewController: UITabBarController {
 
     private func addChildViewController(sbName:String,_ title:String,_ imageName:String) {
         let nav = UIStoryboard.initialWithStoryboradName(Sbname: sbName) as! UINavigationController // 添加导航控制器
-        nav.topViewController.title = title  // nav的title
+        nav.topViewController!.title = title  // nav的title
         nav.tabBarItem.image = UIImage(named: imageName)
         nav.tabBarItem.selectedImage = UIImage(named: imageName + "_highlighted")
         addChildViewController(nav)

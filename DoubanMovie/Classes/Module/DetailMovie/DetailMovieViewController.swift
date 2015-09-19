@@ -21,45 +21,37 @@ class DetailMovieViewController: UIViewController {
     
     var subject_id:String?
 
-    var movies:JSON?
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        println(__FUNCTION__)
-        loadData()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-                println(__FUNCTION__)
-    }
-    
-
     override func viewDidLoad() {
-        println(__FUNCTION__)
+        loadData()
         super.viewDidLoad()
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        ProgressHUD.dismiss()
+    }
+    
     func loadData(){
-//        println(baseUrl + "subject/\(subject_id!)")
-        
-        
+        let tempView = UIView(frame: self.view.frame)
+        tempView.backgroundColor = UIColor.colorFromRGB(0xf0f0f0, alpha: 1.0)
+        view.addSubview(tempView)
+        ProgressHUD.show("加载中,请稍后...")
         Alamofire.request(.GET,baseUrl + "subject/\(subject_id!)", parameters: nil)
-            .responseJSON { (req, res, JsonObj, error) in
-                if(error != nil) {
-                    NSLog("Error: \(error)")
-                    println(req)
-                    println(res)
+            .responseJSON { (request, respons, result) in
+                if(result.isFailure) {
+                    NSLog("Error: \(result.error)")
+                    print(request)
+                    print(respons)
+                    ProgressHUD.showError("网络错误,请稍后再试")
                 }
                 else {
-                    (self.view as! DetailMovieView).movies = JSON(JsonObj!)
-//                    movieView.movies = JSON(JsonObj!)
-//                    self.movieName.text = self.movies!["title"].stringValue
-//                    let movies = json["summary"].string
-//                    println("===\(movies)")
-
-                    
+//                    print(result)
+                    tempView.removeFromSuperview()
+                    (self.view as! DetailMovieView).movies = JSON(result.value!)
+                    ProgressHUD.dismiss()
                 }
         }
+        
 
     }
 

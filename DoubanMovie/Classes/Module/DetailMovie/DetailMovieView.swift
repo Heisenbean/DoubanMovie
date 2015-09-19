@@ -8,10 +8,14 @@
 
 import UIKit
 import SwiftyJSON
-
+let preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 16
 class DetailMovieView: UIView {
 
-    @IBOutlet weak var movieName: UILabel!
+    @IBOutlet weak var movieName: UILabel!{
+        didSet{
+            movieName.preferredMaxLayoutWidth = preferredMaxLayoutWidth
+        }
+    }
     
     @IBOutlet weak var movieIcon: UIImageView!
     
@@ -23,74 +27,65 @@ class DetailMovieView: UIView {
     
     @IBOutlet weak var countryLabel: UILabel!
     
-    @IBOutlet weak var akaLabel: UILabel!
+    @IBOutlet weak var akaLabel: UILabel!{
+        didSet{
+            akaLabel.preferredMaxLayoutWidth = preferredMaxLayoutWidth
+        }
+    }
+
     
     @IBOutlet weak var summaryLabel: UILabel!
     
     @IBOutlet weak var summaryContent: UILabel!{
         didSet{
-            summaryContent.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 8
+            summaryContent.preferredMaxLayoutWidth = preferredMaxLayoutWidth
         }
     }
+    
+    @IBOutlet weak var bgImage: UIImageView!
+    
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        summaryContent.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 8
+//        summaryContent.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 12
         self.layoutIfNeeded()
+        print(summaryContent.frame)
+        print(UIScreen.mainScreen().bounds.width)
     }
    
 
+    
+    func getItemsNameInArray(itemsName:String,_ name:String?) ->String{
+        var tempArray = [String]()
+        for i in movies![itemsName].arrayValue{
+            if name == nil{
+                tempArray.append(i.stringValue)
+            }else{
+                tempArray.append(i[name!].stringValue)
+            }
+        }
+        return tempArray.joinWithSeparator(",")
+    }
+    
     
     var movies:JSON?{
         didSet{
             
             movieIcon.kf_setImageWithURL(NSURL(string: movies!["images"]["large"].stringValue)!)
-            var directorsArray = [String]()
-            var castsArray = [String]()
-            var genresArray = [String]()
-            var countryArray = [String]()
-            var akaArray = [String]()
-
-
-            for d in movies!["directors"].arrayValue{
-                directorsArray.append(d["name"].stringValue)
-            }
-            directorsLabel.text = "导演:" + ",".join(directorsArray)
-            
-            for d in movies!["casts"].arrayValue{
-                castsArray.append(d["name"].stringValue)
-            }
-            castsLabel.text = "主演:" + ",".join(castsArray)
-            
-            for d in movies!["genres"].arrayValue{
-                genresArray.append(d.stringValue)
-            }
-            typeLabel.text = "类型:" + ",".join(genresArray)
-
-            for d in movies!["countries"].arrayValue{
-                countryArray.append(d.stringValue)
-            }
-            countryLabel.text = "地区:" + ",".join(countryArray)
-            for d in movies!["countries"].arrayValue{
-                countryArray.append(d.stringValue)
-            }
-            countryLabel.text = "地区:" + ",".join(countryArray)
-            
-            for d in movies!["aka"].arrayValue{
-                akaArray.append(d.stringValue)
-            }
-            akaLabel.text = "又名:" + ",".join(akaArray)
-
+            let countryArray = [String]()
+            directorsLabel.text = "导演:" + getItemsNameInArray("directors", "name")
+            castsLabel.text = "主演:" + getItemsNameInArray("casts", "name")
+            typeLabel.text = "类型:" + getItemsNameInArray("genres", nil)
+            countryLabel.text = "地区:" + getItemsNameInArray("countries", nil)
+            akaLabel.text = "又名:" + getItemsNameInArray("aka", nil)
             summaryLabel.text = movies!["title"].stringValue + "的简介"
-            
             summaryContent.text = movies!["summary"].stringValue
+            bgImage.kf_setImageWithURL(NSURL(string: movies!["images"]["large"].stringValue)!)
             var originalTitle = movies!["original_title"].stringValue
-            
-            if ",".join(countryArray).hasPrefix("中国大陆"){
+            if countryArray.joinWithSeparator(",").hasPrefix("中国大陆"){
                 originalTitle = ""
             }
-            
             movieName.text = movies!["title"].stringValue + originalTitle + "(" + movies!["year"].stringValue + ")"
-
         }
         
     }
