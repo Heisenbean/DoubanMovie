@@ -21,7 +21,11 @@ class DetailMovieView: UIView {
     
     @IBOutlet weak var directorsLabel: UILabel!
     
-    @IBOutlet weak var castsLabel: UILabel!
+    @IBOutlet weak var castsLabel: UILabel!{
+        didSet{
+            castsLabel.preferredMaxLayoutWidth = preferredMaxLayoutWidth
+        }
+    }
     
     @IBOutlet weak var typeLabel: UILabel!
     
@@ -49,8 +53,8 @@ class DetailMovieView: UIView {
         super.layoutSubviews()
 //        summaryContent.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 12
         self.layoutIfNeeded()
-        print(summaryContent.frame)
-        print(UIScreen.mainScreen().bounds.width)
+//        print(summaryContent.frame)
+//        print(UIScreen.mainScreen().bounds.width)
     }
    
 
