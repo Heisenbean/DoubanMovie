@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 let preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 16
-class DetailMovieView: UIView {
+class DetailMovieView: UIView,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource {
 
     @IBOutlet weak var movieName: UILabel!{
         didSet{
@@ -24,6 +24,9 @@ class DetailMovieView: UIView {
     @IBOutlet weak var castsLabel: UILabel!{
         didSet{
             castsLabel.preferredMaxLayoutWidth = preferredMaxLayoutWidth
+            castsLabel.userInteractionEnabled = true
+           let tap = UITapGestureRecognizer(target: self, action: "tapCastLabel:")
+            castsLabel.addGestureRecognizer(tap)
         }
     }
     
@@ -48,16 +51,24 @@ class DetailMovieView: UIView {
     
     @IBOutlet weak var bgImage: UIImageView!
     
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-//        summaryContent.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 12
-        self.layoutIfNeeded()
-//        print(summaryContent.frame)
-//        print(UIScreen.mainScreen().bounds.width)
+    @IBOutlet weak var castCollectionView: UICollectionView!{
+        didSet{
+//            castCollectionView.backgroundColor = UIColor.whiteColor()
+        }
     }
-   
-
+    
+    @IBOutlet weak var layout: UICollectionViewFlowLayout!
+    
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        print("---" + "\(self.movies)")
+        print("-=-=-" + "\(__FUNCTION__)")
+        
+    }
+    
+    
     
     func getItemsNameInArray(itemsName:String,_ name:String?) ->String{
         var tempArray = [String]()
@@ -71,12 +82,18 @@ class DetailMovieView: UIView {
         return tempArray.joinWithSeparator(",")
     }
     
+    func tapCastLabel(tap:UITapGestureRecognizer){
+        print(tap.numberOfTouches())
+    }
+    
+    @IBAction func test() {
+        NSNotificationCenter.defaultCenter().postNotificationName("HEHE", object: nil)
+    }
     
     var movies:JSON?{
         didSet{
             
             movieIcon.kf_setImageWithURL(NSURL(string: movies!["images"]["large"].stringValue)!)
-            let countryArray = [String]()
             directorsLabel.text = "导演:" + getItemsNameInArray("directors", "name")
             castsLabel.text = "主演:" + getItemsNameInArray("casts", "name")
             typeLabel.text = "类型:" + getItemsNameInArray("genres", nil)
@@ -86,13 +103,56 @@ class DetailMovieView: UIView {
             summaryContent.text = movies!["summary"].stringValue
             bgImage.kf_setImageWithURL(NSURL(string: movies!["images"]["large"].stringValue)!)
             var originalTitle = movies!["original_title"].stringValue
-            if countryArray.joinWithSeparator(",").hasPrefix("中国大陆"){
+            if getItemsNameInArray("countries", nil).hasPrefix("中国大陆"){
                 originalTitle = ""
             }
-            movieName.text = movies!["title"].stringValue + originalTitle + "(" + movies!["year"].stringValue + ")"
+            movieName.text = movies!["title"].stringValue + " " + originalTitle + "(" + movies!["year"].stringValue + ")"
+            
+            castCollectionView.reloadData()
+            print("testtesttesttesttesttesttest")
         }
         
     }
     
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+//        if let movies = movies{
+//            return movies["casts"].arrayValue.count
+//        }
+//
+//        
+//        return 1
+        return movies?["casts"].arrayValue.count ?? 0
+    }
 
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        print("" + "\(__FUNCTION__)")
+     
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! CastCell
+        if let movies = movies{
+            cell.casts = movies["casts"].arrayValue[indexPath.row]
+        }
+        return cell
+    }
+    
+
+    
+
+}
+
+class CastCell:UICollectionViewCell{
+    
+    var casts:JSON?{
+        didSet{
+            castName.text = casts!["name"].stringValue
+            castImage.kf_setImageWithURL(NSURL(string: casts!["avatars"]["large"].stringValue)!)
+        }
+    }
+    
+    @IBOutlet weak var castImage: UIImageView!
+    
+    @IBOutlet weak var castName: UILabel!
+
+    
 }

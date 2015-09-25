@@ -23,11 +23,28 @@ class DetailMovieViewController: UIViewController {
 
     override func viewDidLoad() {
         loadData()
+//        (self.view as! DetailMovieView).castCollectionView.registerClass(CastCell.self, forCellWithReuseIdentifier: "cell")
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "test", name: "HEHE", object: nil)
+    }
+
+    var tempURL:NSURL?
+    
+    func test(){
+        let vc = UIStoryboard.initialViewController("WebPage") as! WebPageViewController
+        vc.webURL = NSURL(string: "http://movie.douban.com/celebrity/1035643/")
+//        self.navigationController?.pushViewController(vc, animated: true)
+        let navVc = UINavigationController(rootViewController: vc)
+        self.presentViewController(navVc, animated: true, completion: nil)
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
         ProgressHUD.dismiss()
     }
     

@@ -114,7 +114,6 @@ class MovieCell:UICollectionViewCell{
                 starImageView.image = UIImage(named: "icon_star_4")
             }
             averageLabel.text = (String.localizedStringWithFormat("%.1f",average.floatValue))
-//            println(average.floatValue)
             if average.floatValue == 0{
                 starImageView.hidden = true
                 averageLabel.hidden = true

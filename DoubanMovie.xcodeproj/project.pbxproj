@@ -29,6 +29,8 @@
 		354D50461B7B8260000EEFE1 /* MovieImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354D50451B7B8260000EEFE1 /* MovieImages.swift */; };
 		354EC1D81B8B75160051CE16 /* DetailMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EC1D71B8B75160051CE16 /* DetailMovieViewController.swift */; };
 		354EC1DA1B8B75260051CE16 /* DetailMovie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EC1D91B8B75260051CE16 /* DetailMovie.storyboard */; };
+		3559BFE81BB52AB700D6D789 /* WebPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3559BFE71BB52AB700D6D789 /* WebPage.storyboard */; settings = {ASSET_TAGS = (); }; };
+		3559BFED1BB52B5900D6D789 /* WebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3559BFEC1BB52B5900D6D789 /* WebPageViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		35AC856C1BA9539E00C87DED /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 35AC85691BA9539E00C87DED /* ProgressHUD.bundle */; };
 		35AC856D1BA9539E00C87DED /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 35AC856B1BA9539E00C87DED /* ProgressHUD.m */; };
 		6DDC2B4099737074534A7F86 /* Pods_DoubanMovie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A49A04DCBB1110581EEFC17 /* Pods_DoubanMovie.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -73,6 +75,8 @@
 		354D50451B7B8260000EEFE1 /* MovieImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieImages.swift; sourceTree = "<group>"; };
 		354EC1D71B8B75160051CE16 /* DetailMovieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMovieViewController.swift; sourceTree = "<group>"; };
 		354EC1D91B8B75260051CE16 /* DetailMovie.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailMovie.storyboard; sourceTree = "<group>"; };
+		3559BFE71BB52AB700D6D789 /* WebPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebPage.storyboard; sourceTree = "<group>"; };
+		3559BFEC1BB52B5900D6D789 /* WebPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebPageViewController.swift; sourceTree = "<group>"; };
 		35AC85691BA9539E00C87DED /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		35AC856A1BA9539E00C87DED /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		35AC856B1BA9539E00C87DED /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
@@ -271,6 +275,8 @@
 				354EC1D71B8B75160051CE16 /* DetailMovieViewController.swift */,
 				354EC1D91B8B75260051CE16 /* DetailMovie.storyboard */,
 				3546CD7D1B96BD2A00F615D2 /* DetailMovieView.swift */,
+				3559BFE71BB52AB700D6D789 /* WebPage.storyboard */,
+				3559BFEC1BB52B5900D6D789 /* WebPageViewController.swift */,
 			);
 			path = DetailMovie;
 			sourceTree = "<group>";
@@ -390,6 +396,7 @@
 			files = (
 				35AC856C1BA9539E00C87DED /* ProgressHUD.bundle in Resources */,
 				35163D321B79EC4A008CA295 /* MyMovies.storyboard in Resources */,
+				3559BFE81BB52AB700D6D789 /* WebPage.storyboard in Resources */,
 				35163D301B79EC4A008CA295 /* Cinema.storyboard in Resources */,
 				35163CF61B79DA96008CA295 /* LaunchScreen.xib in Resources */,
 				354EC1DA1B8B75260051CE16 /* DetailMovie.storyboard in Resources */,
@@ -461,6 +468,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3559BFED1BB52B5900D6D789 /* WebPageViewController.swift in Sources */,
 				354D50241B7B53A2000EEFE1 /* Movies.swift in Sources */,
 				354D50261B7B5405000EEFE1 /* Rate.swift in Sources */,
 				354D50441B7B7E6C000EEFE1 /* HotShowing.swift in Sources */,
