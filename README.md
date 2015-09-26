@@ -5,10 +5,16 @@
 
 ####这APP暂时看起来是这个样子的.
 
-![image](https://github.com/twoeast/Movies/raw/master/ScreenShot/ScreenShot1.jgp)
+<img src="https://github.com/twoeast/Movies/raw/master/ScreenShot/ScreenShot1.png" height="667" width="375" />
+<img src="https://github.com/twoeast/Movies/raw/master/ScreenShot/ScreenShot2.png" height="667" width="375" />
+<img src="https://github.com/twoeast/Movies/raw/master/ScreenShot/ScreenShot3.png" height="667" width="375" />
+<img src="https://github.com/twoeast/Movies/raw/master/ScreenShot/ScreenShot4.png" height="667" width="375" />
 
-![image](https://github.com/twoeast/Movies/raw/master/ScreenShot/ScreenShot2.png)
+####项目用到的三方库
 
-![image](https://github.com/twoeast/Movies/raw/master/ScreenShot/ScreenShot3.png)
-
+- [Alamofire](https://github.com/Alamofire/Alamofire)
+- [Kingfisher](https://github.com/onevcat/Kingfisher)
+- [SVProgressHUD](https://github.com/TransitApp/SVProgressHUD)
+- [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
+- [ProgressHUD](https://github.com/relatedcode/ProgressHUD)
 
