@@ -5,4 +5,4 @@
 
 ####这APP看起来是这个样子的.
 
-![image](https://github.com/twoeast/Movies/blob/master/ScreenShot/ScreenShot1.png)
+![image](https://github.com/twoeast/Movies/raw/master/ScreenShot/ScreenShot1.png)
