@@ -5,14 +5,12 @@
 
 ####这APP暂时看起来是这个样子的.
 
-<<<<<<< HEAD
+
 <img src="https://github.com/twoeast/Movies/raw/master/ScreenShot/ScreenShot1.png" height="667" width="375" />
 <img src="https://github.com/twoeast/Movies/raw/master/ScreenShot/ScreenShot2.png" height="667" width="375" />
 <img src="https://github.com/twoeast/Movies/raw/master/ScreenShot/ScreenShot3.png" height="667" width="375" />
 <img src="https://github.com/twoeast/Movies/raw/master/ScreenShot/ScreenShot4.png" height="667" width="375" />
-=======
-![image](https://github.com/twoeast/Movies/raw/master/ScreenShot/ScreenShot1.jpg)
->>>>>>> 198d3d1b849e0b4085d3db4ee1e88a4d61cd31d7
+
 
 ####项目用到的三方库
 
