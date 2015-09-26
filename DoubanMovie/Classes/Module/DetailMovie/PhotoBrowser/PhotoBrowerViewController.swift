@@ -78,7 +78,6 @@ class PhotoBrowerViewController: UIViewController{
 
         collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: [], animated: true)
         
-        print(imageURLs)
     }
     
 

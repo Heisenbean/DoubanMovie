@@ -32,8 +32,9 @@ class PhotoViewerController: UIViewController, UIScrollViewDelegate {
             scrollView.contentSize = CGSizeZero
             scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
             scrollView.contentOffset = CGPointZero
-            
-            KingfisherManager.sharedManager.downloader.downloadImageWithURL(imageURL!, progressBlock: { (receivedSize, totalSize) -> () in
+            let downloader = KingfisherManager.sharedManager.downloader
+            downloader.downloadTimeout = 3.0
+            downloader.downloadImageWithURL(imageURL!, progressBlock: { (receivedSize, totalSize) -> () in
                 if !self.isLoadingImage {
                     SVProgressHUD.show()
                     self.isLoadingImage = true
@@ -50,31 +51,6 @@ class PhotoViewerController: UIViewController, UIScrollViewDelegate {
             }
         }
     }
-    
-    func test(){
-        let downloader = KingfisherManager.sharedManager.downloader
-        downloader.downloadTimeout = 5
-//        downloader.downloadImageWithURL(imageURL!, progressBlock: { (_, _) -> () in
-//            
-//            if !self.isLoadingImage {
-//                SVProgressHUD.show()
-//                self.isLoadingImage = true
-//            }
-//            
-//            }) { (image, error, imageURL) -> () in
-//                
-//                self.isLoadingImage = false
-//                SVProgressHUD.dismiss()
-//                if error != nil {
-//                    SVProgressHUD.showInfoWithStatus("加载图片错误")
-//                    return
-//                }
-//                self.calaImageSize(image)
-//        }
-    }
-    
-    
-
     
     lazy var imageView: UIImageView = {
         
@@ -146,6 +122,11 @@ class PhotoViewerController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        SVProgressHUD.dismiss()
     }
     
     // MARK: - 设置手势

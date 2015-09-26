@@ -103,8 +103,6 @@ class DetailMovieView: UIView,UICollectionViewDelegateFlowLayout,UICollectionVie
         for c in movies!["casts"].arrayValue{
             imageUrls.append(NSURL(string:c["avatars"]["large"].stringValue)!)
         }
-        
-        
         castCollectionView.reloadData()
     }
     
@@ -139,13 +137,6 @@ extension DetailMovieView{
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         imageDelegate?.didSelectCastImage(self, index: indexPath.item)
-        var imageUrls:[NSURL]?
-        if let movies = movies{
-            let castsArray = movies["casts"].arrayValue
-            for c in castsArray{
-                imageUrls?.append(NSURL(string: c["avatars"]["large"].stringValue)!)
-            }
-        }
     }
     
     
