@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:DoubanMovie.xcodeproj">
+      location = "group:/Users/Heisenbean/Documents/DoubanMovie/DoubanMovie.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

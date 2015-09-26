@@ -31,6 +31,8 @@
 		354EC1DA1B8B75260051CE16 /* DetailMovie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EC1D91B8B75260051CE16 /* DetailMovie.storyboard */; };
 		3559BFE81BB52AB700D6D789 /* WebPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3559BFE71BB52AB700D6D789 /* WebPage.storyboard */; settings = {ASSET_TAGS = (); }; };
 		3559BFED1BB52B5900D6D789 /* WebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3559BFEC1BB52B5900D6D789 /* WebPageViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		3559BFF11BB644DC00D6D789 /* PhotoBrowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3559BFEF1BB644DC00D6D789 /* PhotoBrowerViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		3559BFF21BB644DC00D6D789 /* PhotoViewerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3559BFF01BB644DC00D6D789 /* PhotoViewerController.swift */; settings = {ASSET_TAGS = (); }; };
 		35AC856C1BA9539E00C87DED /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 35AC85691BA9539E00C87DED /* ProgressHUD.bundle */; };
 		35AC856D1BA9539E00C87DED /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 35AC856B1BA9539E00C87DED /* ProgressHUD.m */; };
 		6DDC2B4099737074534A7F86 /* Pods_DoubanMovie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A49A04DCBB1110581EEFC17 /* Pods_DoubanMovie.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -77,6 +79,8 @@
 		354EC1D91B8B75260051CE16 /* DetailMovie.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailMovie.storyboard; sourceTree = "<group>"; };
 		3559BFE71BB52AB700D6D789 /* WebPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebPage.storyboard; sourceTree = "<group>"; };
 		3559BFEC1BB52B5900D6D789 /* WebPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebPageViewController.swift; sourceTree = "<group>"; };
+		3559BFEF1BB644DC00D6D789 /* PhotoBrowerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowerViewController.swift; sourceTree = "<group>"; };
+		3559BFF01BB644DC00D6D789 /* PhotoViewerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewerController.swift; sourceTree = "<group>"; };
 		35AC85691BA9539E00C87DED /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		35AC856A1BA9539E00C87DED /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		35AC856B1BA9539E00C87DED /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
@@ -272,6 +276,7 @@
 		354EC1D61B8B74FB0051CE16 /* DetailMovie */ = {
 			isa = PBXGroup;
 			children = (
+				3559BFEE1BB644DC00D6D789 /* PhotoBrowser */,
 				354EC1D71B8B75160051CE16 /* DetailMovieViewController.swift */,
 				354EC1D91B8B75260051CE16 /* DetailMovie.storyboard */,
 				3546CD7D1B96BD2A00F615D2 /* DetailMovieView.swift */,
@@ -279,6 +284,15 @@
 				3559BFEC1BB52B5900D6D789 /* WebPageViewController.swift */,
 			);
 			path = DetailMovie;
+			sourceTree = "<group>";
+		};
+		3559BFEE1BB644DC00D6D789 /* PhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				3559BFEF1BB644DC00D6D789 /* PhotoBrowerViewController.swift */,
+				3559BFF01BB644DC00D6D789 /* PhotoViewerController.swift */,
+			);
+			path = PhotoBrowser;
 			sourceTree = "<group>";
 		};
 		35AC85671BA9539400C87DED /* Libs */ = {
@@ -481,6 +495,8 @@
 				35163D371B79ED0D008CA295 /* UIKit+Extension.swift in Sources */,
 				3546CD7E1B96BD2A00F615D2 /* DetailMovieView.swift in Sources */,
 				35163D331B79EC4A008CA295 /* MyMoviesViewController.swift in Sources */,
+				3559BFF11BB644DC00D6D789 /* PhotoBrowerViewController.swift in Sources */,
+				3559BFF21BB644DC00D6D789 /* PhotoViewerController.swift in Sources */,
 				35AC856D1BA9539E00C87DED /* ProgressHUD.m in Sources */,
 				3546CD7A1B96B41200F615D2 /* Person.swift in Sources */,
 				354EC1D81B8B75160051CE16 /* DetailMovieViewController.swift in Sources */,

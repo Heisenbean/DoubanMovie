@@ -54,10 +54,12 @@ code_sign_if_enabled() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods-DoubanMovie/Alamofire.framework'
   install_framework 'Pods-DoubanMovie/Kingfisher.framework'
+  install_framework 'Pods-DoubanMovie/SVProgressHUD.framework'
   install_framework 'Pods-DoubanMovie/SwiftyJSON.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods-DoubanMovie/Alamofire.framework'
   install_framework 'Pods-DoubanMovie/Kingfisher.framework'
+  install_framework 'Pods-DoubanMovie/SVProgressHUD.framework'
   install_framework 'Pods-DoubanMovie/SwiftyJSON.framework'
 fi

@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class DetailMovieViewController: UIViewController {
+class DetailMovieViewController: UIViewController,DetailMovieViewDelegate {
     @IBOutlet weak var mainScrollView: UIScrollView!
     
 
@@ -26,6 +26,8 @@ class DetailMovieViewController: UIViewController {
 //        (self.view as! DetailMovieView).castCollectionView.registerClass(CastCell.self, forCellWithReuseIdentifier: "cell")
         super.viewDidLoad()
     }
+    
+    var browserVc = PhotoBrowerViewController()
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -62,14 +64,18 @@ class DetailMovieViewController: UIViewController {
                     ProgressHUD.showError("网络错误,请稍后再试")
                 }
                 else {
-//                    print(result)
                     tempView.removeFromSuperview()
-                    (self.view as! DetailMovieView).movies = JSON(result.value!)
+                    let detailView = (self.view as! DetailMovieView)
+                    detailView.movies = JSON(result.value!)
+                    detailView.imageDelegate = self
                     ProgressHUD.dismiss()
                 }
         }
-        
-
+    }
+    
+    func didSelectCastImage(detailView: DetailMovieView, index: Int) {
+        let browserVc = PhotoBrowerViewController.creatBrowserWith(detailView.imageUrls, imageIndex: index)
+        presentViewController(browserVc, animated: true, completion: nil)
     }
 
 }
