@@ -5,7 +5,7 @@
 
 ####这APP暂时看起来是这个样子的.
 
-![image](https://github.com/twoeast/Movies/raw/master/ScreenShot/ScreenShot1.jgp)
+![image](https://github.com/twoeast/Movies/raw/master/ScreenShot/ScreenShot1.jpg)
 
 ![image](https://github.com/twoeast/Movies/raw/master/ScreenShot/ScreenShot2.png)
 
