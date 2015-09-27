@@ -143,7 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				35163D1F1B79EC4A008CA295 /* Classes */,
-				35163CE91B79DA96008CA295 /* Supporting Files */,
 			);
 			path = DoubanMovie;
 			sourceTree = "<group>";
@@ -157,6 +156,7 @@
 				35163CEA1B79DA96008CA295 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		35163CFE1B79DA96008CA295 /* DoubanMovieTests */ = {
@@ -181,6 +181,7 @@
 			children = (
 				35163D201B79EC4A008CA295 /* Model */,
 				35163D211B79EC4A008CA295 /* Module */,
+				35163CE91B79DA96008CA295 /* Supporting Files */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

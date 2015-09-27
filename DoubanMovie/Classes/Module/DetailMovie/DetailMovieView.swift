@@ -66,6 +66,8 @@ class DetailMovieView: UIView,UICollectionViewDelegateFlowLayout,UICollectionVie
     
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
     
+    var scrollView:UIScrollView?
+    
     
     func tapCastLabel(tap:UITapGestureRecognizer){
         print(tap.numberOfTouches())
@@ -82,6 +84,13 @@ class DetailMovieView: UIView,UICollectionViewDelegateFlowLayout,UICollectionVie
     }
     
     var imageUrls = [NSURL]()
+    
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        scrollView?.contentSize = CGSizeMake(0, CGRectGetMaxY(castCollectionView.frame))
+    }
+    
     
     // MARK: 设置数据
     func setData(){

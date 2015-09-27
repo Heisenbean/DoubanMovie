@@ -16,7 +16,7 @@ class DetailMovieViewController: UIViewController,DetailMovieViewDelegate {
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        mainScrollView.contentSize = CGSizeMake(0, 800)
+//        mainScrollView.contentSize = CGSizeMake(0, 800)
     }
     
     var subject_id:String?
@@ -68,6 +68,7 @@ class DetailMovieViewController: UIViewController,DetailMovieViewDelegate {
                     let detailView = (self.view as! DetailMovieView)
                     detailView.movies = JSON(result.value!)
                     detailView.imageDelegate = self
+                    detailView.scrollView = self.mainScrollView
                     ProgressHUD.dismiss()
                 }
         }
