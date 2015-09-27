@@ -6,10 +6,10 @@
 ####这APP暂时看起来是这个样子的.
 
 
-<img src="https://github.com/twoeast/Movies/raw/master/ScreenShot/ScreenShot1.png" height="667" width="375" />
-<img src="https://github.com/twoeast/Movies/raw/master/ScreenShot/ScreenShot2.png" height="667" width="375" />
-<img src="https://github.com/twoeast/Movies/raw/master/ScreenShot/ScreenShot3.png" height="667" width="375" />
-<img src="https://github.com/twoeast/Movies/raw/master/ScreenShot/ScreenShot4.png" height="667" width="375" />
+<img src="https://github.com/Heisenbean/DoubanMovie/raw/master/ScreenShot/ScreenShot1.png" height="568" width="320" />
+<img src="https://github.com/Heisenbean/DoubanMovie/raw/master/ScreenShot/ScreenShot2.png" height="568" width="320" />
+<img src="https://github.com/Heisenbean/DoubanMovie/raw/master/ScreenShot/ScreenShot3.png" height="568" width="320" />
+<img src="https://github.com/Heisenbean/DoubanMovie/raw/master/ScreenShot/ScreenShot4.png" height="568" width="320" />
 
 
 ####项目用到的三方库
