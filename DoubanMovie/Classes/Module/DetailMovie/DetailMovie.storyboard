@@ -32,7 +32,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SFc-oE-9KT" userLabel="电影图片">
+                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SFc-oE-9KT" userLabel="电影图片">
                                                     <rect key="frame" x="240" y="10" width="120" height="180"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="180" id="2Ef-od-a2Z"/>

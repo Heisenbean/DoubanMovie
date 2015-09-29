@@ -8,12 +8,15 @@
 
 import UIKit
 import SwiftyJSON
-private let ClickedImageNotification = "ClickedImageNotification"
+let ClickedImageNotification = "ClickedImageNotification"
 let preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 16
+
 
 protocol DetailMovieViewDelegate:NSObjectProtocol{
     func didSelectCastImage(detailView:DetailMovieView,index:Int)
 }
+
+
 
 class DetailMovieView: UIView,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource {
 
@@ -28,16 +31,18 @@ class DetailMovieView: UIView,UICollectionViewDelegateFlowLayout,UICollectionVie
         }
     }
     
-    @IBOutlet weak var movieIcon: UIImageView!
-    
+    @IBOutlet weak var movieIcon: UIImageView!{
+        didSet{
+            let tap = UITapGestureRecognizer(target: self, action: "tapMovieIcon")
+            movieIcon.addGestureRecognizer(tap)
+        }
+    }
+
     @IBOutlet weak var directorsLabel: UILabel!
     
     @IBOutlet weak var castsLabel: UILabel!{
         didSet{
             castsLabel.preferredMaxLayoutWidth = preferredMaxLayoutWidth
-            castsLabel.userInteractionEnabled = true
-           let tap = UITapGestureRecognizer(target: self, action: "tapCastLabel:")
-            castsLabel.addGestureRecognizer(tap)
         }
     }
     
@@ -67,16 +72,8 @@ class DetailMovieView: UIView,UICollectionViewDelegateFlowLayout,UICollectionVie
     @IBOutlet weak var layout: UICollectionViewFlowLayout!
     
     var scrollView:UIScrollView?
-    
-    
-    func tapCastLabel(tap:UITapGestureRecognizer){
-        print(tap.numberOfTouches())
-    }
-    
-    @IBAction func test() {
-        NSNotificationCenter.defaultCenter().postNotificationName("HEHE", object: nil)
-    }
-    
+
+
     var movies:JSON?{
         didSet{
             setData()
@@ -84,6 +81,12 @@ class DetailMovieView: UIView,UICollectionViewDelegateFlowLayout,UICollectionVie
     }
     
     var imageUrls = [NSURL]()
+    
+    func tapMovieIcon(){
+//        let userInfo = ["icon":movieIcon]
+//        NSNotificationCenter.defaultCenter().postNotificationName("aa", object: nil, userInfo: userInfo)
+        NSNotificationCenter.defaultCenter().postNotificationName(ClickedImageNotification, object: nil)
+    }
     
     
     override func layoutSubviews() {
@@ -127,6 +130,7 @@ class DetailMovieView: UIView,UICollectionViewDelegateFlowLayout,UICollectionVie
         return tempArray.joinWithSeparator(",")
     }
 }
+
 
 extension DetailMovieView{
     
