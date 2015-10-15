@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor.whiteColor()
         window?.makeKeyAndVisible()
         
-        self.window?.rootViewController = UIStoryboard.initialWithStoryboradName(Sbname: "Main")
+        self.window?.rootViewController = UIStoryboard.initialViewController("Main")
         
         return true
     }

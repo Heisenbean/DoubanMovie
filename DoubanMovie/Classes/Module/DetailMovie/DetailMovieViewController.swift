@@ -70,24 +70,16 @@ class DetailMovieViewController: UIViewController,DetailMovieViewDelegate {
         tempView.backgroundColor = UIColor.colorFromRGB(0xf0f0f0, alpha: 1.0)
         view.addSubview(tempView)
         ProgressHUD.show("加载中,请稍后...")
-        Alamofire.request(.GET,baseUrl + "subject/\(subject_id!)", parameters: nil)
-            .responseJSON { (request, respons, result) in
-                if(result.isFailure) {
-                    NSLog("Error: \(result.error)")
-                    print(request)
-                    print(respons)
-                    ProgressHUD.showError("网络错误,请稍后再试")
-                }
-                else {
-                    tempView.removeFromSuperview()
-                    let detailView = (self.view as! DetailMovieView)
-                    self.urlArray.append(NSURL(string: JSON(result.value!)["images"]["large"].stringValue)!)
-                    detailView.movies = JSON(result.value!)
-                    detailView.imageDelegate = self
-                    detailView.scrollView = self.mainScrollView
-                    ProgressHUD.dismiss()
-                }
+        
+        NetworkTool.requestJSON(.GET, URLString: baseUrl + "subject/\(subject_id!)", parameters: nil) { (JSONData) -> () in
+            tempView.removeFromSuperview()
+            let detailView = (self.view as! DetailMovieView)
+            self.urlArray.append(NSURL(string: JSON(JSONData!)["images"]["large"].stringValue)!)
+            detailView.movies = JSON(JSONData!)
+            detailView.imageDelegate = self
+            detailView.scrollView = self.mainScrollView
         }
+
     }
     
     func didSelectCastImage(detailView: DetailMovieView, index: Int) {

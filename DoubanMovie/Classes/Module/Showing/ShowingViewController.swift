@@ -47,24 +47,19 @@ class ShowingViewController: UICollectionViewController {
     
     func loadData(){
         ProgressHUD.show("加载中,请稍后....")
-        Alamofire.request(.GET, baseUrl + "in_theaters", parameters: nil)
-        .responseJSON { (req, res, result) -> Void in
-            if(result.isFailure) {
-                ProgressHUD.showError("网络错误,请稍后再试")
-                print("Error: \(result.error)\(req)\(res)")
-            }
-            else {
-                ProgressHUD.dismiss()
-                var json = JSON(result.value!)
-                let movies = json["subjects"].arrayValue
-                self.jsonArray = movies
-                    self.collectionView?.reloadData()
-            }
+        
+        NetworkTool.requestJSON(.GET, URLString: baseUrl + "in_theaters", parameters: nil) { (JSONData) -> () in
+            var json = JSON(JSONData!)
+            let movies = json["subjects"].arrayValue
+            self.jsonArray = movies
+            self.collectionView?.reloadData()
         }
+
     }
     
     @IBAction func didClickedSearchButton() {
-        let vc = UIStoryboard.initialWithStoryboradName(Sbname: "Search")
+        ProgressHUD.dismiss()
+        let vc = UIStoryboard.initialViewController("Search")
         self.presentViewController(vc, animated: true, completion: nil)
     }
     
