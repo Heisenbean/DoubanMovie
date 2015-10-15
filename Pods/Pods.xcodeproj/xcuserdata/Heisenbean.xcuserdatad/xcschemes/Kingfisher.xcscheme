@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "588F10112D4B99343BF0BB6D"
+               BlueprintIdentifier = "1296699C92756FEB716DE700"
                BuildableName = "Kingfisher.framework"
                BlueprintName = "Kingfisher"
                ReferencedContainer = "container:Pods.xcodeproj">

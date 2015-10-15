@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EFE-zI-oVF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EFE-zI-oVF">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
@@ -11,6 +11,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="0f1-SR-PaL">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="KHT-w7-TTW">
                             <size key="itemSize" width="169" height="187"/>
@@ -28,9 +29,11 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hwc-tE-d1F">
                                             <rect key="frame" x="0.0" y="0.0" width="169" height="153"/>
+                                            <animations/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2225.23" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GjY-TE-hsz" userLabel="电影名">
                                             <rect key="frame" x="0.0" y="155" width="47" height="15"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="15" id="0Jk-8R-EU3"/>
                                             </constraints>
@@ -40,6 +43,7 @@
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xxi-Dd-xkb">
                                             <rect key="frame" x="0.0" y="175" width="68" height="12"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="68" id="Fuw-un-fd3"/>
                                                 <constraint firstAttribute="height" constant="12" id="jbs-Gm-MNq"/>
@@ -47,12 +51,14 @@
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1E-U9-ScC">
                                             <rect key="frame" x="70" y="173.5" width="23.5" height="14.5"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无评分" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mud-22-jtz">
                                             <rect key="frame" x="0.0" y="172" width="48" height="15"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="48" id="Q2S-63-WLw"/>
                                                 <constraint firstAttribute="height" constant="15" id="vJa-7p-fQ2"/>
@@ -62,8 +68,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <animations/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <animations/>
                                 <constraints>
                                     <constraint firstItem="xxi-Dd-xkb" firstAttribute="leading" secondItem="lBO-tP-RhS" secondAttribute="leading" id="1AN-fy-fRL"/>
                                     <constraint firstItem="GjY-TE-hsz" firstAttribute="leading" secondItem="mud-22-jtz" secondAttribute="leading" id="1Sl-nj-kn7"/>
@@ -92,7 +100,19 @@
                             <outlet property="delegate" destination="727-oD-Z31" id="YC9-6R-xlh"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="noh-u5-8mR"/>
+                    <navigationItem key="navigationItem" id="noh-u5-8mR">
+                        <barButtonItem key="rightBarButtonItem" id="3sP-xD-0Yb">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yCK-7a-AGO">
+                                <rect key="frame" x="560" y="11" width="20" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <state key="normal" image="mine_btn_search"/>
+                                <connections>
+                                    <action selector="didClickedSearchButton" destination="727-oD-Z31" eventType="touchUpInside" id="maf-FD-wFB"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="layout" destination="KHT-w7-TTW" id="HbB-sx-0VV"/>
                         <outlet property="myCollectionView" destination="0f1-SR-PaL" id="AQc-Ke-Qeh"/>
@@ -110,6 +130,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bBX-Pg-fW8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -121,4 +142,7 @@
             <point key="canvasLocation" x="579" y="262"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mine_btn_search" width="20" height="20"/>
+    </resources>
 </document>

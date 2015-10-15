@@ -41,6 +41,8 @@ class ShowingViewController: UICollectionViewController {
         self.myCollectionView.contentInset = UIEdgeInsetsMake(0, 0, 24, 0)
 
     }
+    
+    
     var jsonArray:[JSON]?
     
     func loadData(){
@@ -60,6 +62,13 @@ class ShowingViewController: UICollectionViewController {
             }
         }
     }
+    
+    @IBAction func didClickedSearchButton() {
+        let vc = UIStoryboard.initialWithStoryboradName(Sbname: "Search")
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    
 }
 
 
